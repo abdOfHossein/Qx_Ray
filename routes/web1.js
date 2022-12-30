@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 
 router.post(
   "/",
-  body("field1").isNumeric().withMessage("field1 must be Number"),
+  body("field1").notEmpty().withMessage("field1 must fill").isNumeric().withMessage("field1 must be Number"),
   body("field2").isAlpha().withMessage("field2 must be Character"),
   body("field3").isAlpha().withMessage("field3 must be Character"),
   body("field4").isNumeric().withMessage("field4 must be Number"),
@@ -25,17 +25,19 @@ router.post(
     if (!errors.isEmpty()) {
       let field1Err, field2Err, field3Err, field4Err;
       for (const err of errors.errors) {
+        if (err.param === "field1") field1Err = err.msg;
         if (err.param === "field2") field2Err = err.msg;
+        if (err.param === "field3") field3Err = err.msg;
+        if (err.param === "field4") field4Err = err.msg;
       }
       return res.status(400).render("index", {
-        field1Err: null,
+        field1Err,
         field2Err,
-        field3Err: null,
-        field4Err: null,
+        field3Err,
+        field4Err,
         successMsg: null,
       });
     }
-    console.log("hereeeeeeeeeeeeeeeeeee");
     return res.render("index", {
       field1Err: null,
       field2Err: null,
