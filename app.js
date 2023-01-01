@@ -13,7 +13,7 @@ const usersRouter = require('./routes/web1');
 const port = process.env.PORT_APP;
 const host = process.env.HOST_APP;
 // view engine setup
-app.set('views', path.join(__dirname, 'views'))
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));

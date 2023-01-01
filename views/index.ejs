@@ -7,8 +7,9 @@
     <div class="content-success">
       <p id="successMsg" class="success"><%= successMsg %></p>
     </div>
-    <form method="post" action="http://127.0.0.1:3000/SHZ1-010101M1234-HFOWW">
-      <div class="countainer">
+
+    <div class="countainer">
+      <form method="post" action="http://127.0.0.1:3000/SHZ1-010101m1234-hfoww">
         <div class="content-fields">
           <p id="field1Err" class="err"><%= field1Err %></p>
           <div class="field1">
@@ -17,7 +18,7 @@
               class="input-field1"
               name="field1"
               type="number"
-              placeholder="فیلد1 را وراد کنید (عدد,اجباری)"
+              placeholder="فیلد1 را وارد کنید (عدد,اجباری)"
             />
           </div>
           <p id="field2Err" class="err"><%= field2Err %></p>
@@ -27,7 +28,7 @@
               class="input-field2"
               name="field2"
               type="text"
-              placeholder="فیلد2 را وراد کنید (حرف فارسی /انگلیسی,اختیاری)"
+              placeholder="فیلد2 را وارد کنید (حرف فارسی /انگلیسی,اختیاری)"
             />
           </div>
           <p id="field3Err" class="err"><%= field3Err %></p>
@@ -37,7 +38,7 @@
               class="input-field3"
               name="field3"
               type="text"
-              placeholder="فیلد3 را وراد کنید (حرف فارسی /انگلیسی,اختیاری)"
+              placeholder="فیلد3 را وارد کنید (حرف فارسی /انگلیسی,اختیاری)"
             />
           </div>
           <p id="field4Err" class="err"><%= field4Err %></p>
@@ -47,23 +48,27 @@
               class="input-field4"
               name="field4"
               type="number"
-              placeholder="فیلد4 را وراد کنید (عدد,اختیاری)"
+              placeholder="فیلد4 را وارد کنید (عدد,اختیاری)"
             />
           </div>
           <div class="save-info">
             <input
               id="btn-save-db"
-              class="btn-save-info"
+              class="btn"
               type="submit"
               value="نوشتن اطلاعات فوق در دیتابیس "
             />
           </div>
         </div>
-        <div class="content-new-tab">
-          <div class="new-tab">باز شدن تب جدید</div>
-        </div>
+      </form>
+      <div class="content-new-tab">
+        <form action="Web2.ir/SHZ1-010101m1234-hfoww" method="get">
+          <div class="new-tab">
+            <input class="btn" type="submit" value="باز شدن تب جدید " />
+          </div>
+        </form>
       </div>
-    </form>
+    </div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="/js/main.js"></script>
