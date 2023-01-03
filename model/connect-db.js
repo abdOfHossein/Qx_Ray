@@ -1,3 +1,31 @@
+// const Sequelize = require('sequelize');
+// const config = require('dotenv').config();
+
+// const username = process.env.DB_USERNAME;
+// const pass = process.env.DB_PASS;
+// const database = process.env.DB_NAME;
+
+// const sequelize = new Sequelize(database, username, pass, {
+//   host: 'localhost',
+//   dialect: 'postgres',
+//   pool: {
+//     max: 5,
+//     min: 0,
+//     acquire: 30000,
+//     idle: 10000,
+//   },
+// });
+// async function checkConnection() {
+//   try {
+//     await sequelize.authenticate();
+//     console.log('Connected To Db ....');
+//   } catch (e) {
+//     console.log(`Can not Connect To Db Err ===>${e}`);
+//     throw e;
+//   }
+// }
+// checkConnection()
+
 const Sequelize = require('sequelize');
 const config = require('dotenv').config();
 
@@ -5,7 +33,7 @@ const username = process.env.DB_USERNAME;
 const pass = process.env.DB_PASS;
 const database = process.env.DB_NAME;
 
-const sequelize = new Sequelize(database, username, pass, {
+const db = new Sequelize(database, username, pass, {
   host: 'localhost',
   dialect: 'postgres',
   pool: {
@@ -17,7 +45,7 @@ const sequelize = new Sequelize(database, username, pass, {
 });
 async function checkConnection() {
   try {
-    await sequelize.authenticate();
+    await db.authenticate();
     console.log('Connected To Db ....');
   } catch (e) {
     console.log(`Can not Connect To Db Err ===>${e}`);
@@ -25,9 +53,4 @@ async function checkConnection() {
   }
 }
 checkConnection()
-
-const db = {};
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-db.Phase_1 = require('./phase1-models')(sequelize, Sequelize);
 module.exports = db;

@@ -1,6 +1,6 @@
 const controller = {};
 const db = require('../model/connect-db');
-const Phase1 = db.Phase_1;
+const Pr_10 = require('../model/phase1-models');
 const { validationResult } = require('express-validator');
 
 controller.displayPage = (req, res) => {
@@ -33,7 +33,7 @@ controller.saveInfoInDb = async (req, res) => {
         successMsg: null,
       });
     }
-    const phase1 = Phase1.create({
+    const pr_10 =await Pr_10.create({
       field1: req.body.field1,
       field2: req.body.field2,
       field3: req.body.field3,
@@ -42,7 +42,7 @@ controller.saveInfoInDb = async (req, res) => {
       field6: '010101m1234',
       field7: 'Web2.ir/SHZ1-010101m1234-hfoww',
     });
-    console.log(phase1);
+    console.log(pr_10);
     return res.render('index', {
       field1Err: null,
       field2Err: null,

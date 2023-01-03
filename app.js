@@ -4,7 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const config = require('dotenv').config();
-
+const models=require('./model/models')
 //route
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/web1');
