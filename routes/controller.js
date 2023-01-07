@@ -10,6 +10,7 @@ controller.displayPage = (req, res) => {
     field3Err: null,
     field4Err: null,
     successMsg: null,
+    url: req.originalUrl,
   });
 };
 
@@ -31,17 +32,28 @@ controller.saveInfoInDb = async (req, res) => {
         field3Err,
         field4Err,
         successMsg: null,
+        url: req.originalUrl,
       });
     }
-    const pr_10 =await Pr_10.create({
-      field1: req.body.field1,
-      field2: req.body.field2,
-      field3: req.body.field3,
-      field4: req.body.field4,
-      field5: 'SHZ1',
-      field6: '010101m1234',
-      field7: 'Web2.ir/SHZ1-010101m1234-hfoww',
-    });
+
+    const url = req.originalUrl;
+    console.log(url);
+    console.log(typeof url);
+    const field5 = url.split('-')[0].split('/')[1]
+    const field6 = url.split('-')[1];
+    console.log(field5, field6);
+
+    console.log('req.originalUrl', req.originalUrl);
+    const pr_10 = new Pr_10();
+    (pr_10.field1 = req.body.field1),
+      (pr_10.field2 = req.body.field2),
+      (pr_10.field3 = req.body.field3),
+      (pr_10.field4 = req.body.field4),
+      (pr_10.field5 = field5),
+      (pr_10.field6 = field6),
+      (pr_10.field7 = `Web2.ir${req.originalUrl}`);
+
+    await pr_10.save();
     console.log(pr_10);
     return res.render('index', {
       field1Err: null,
@@ -49,6 +61,7 @@ controller.saveInfoInDb = async (req, res) => {
       field3Err: null,
       field4Err: null,
       successMsg: 'Data saved in Database Successfully',
+      url: req.originalUrl,
     });
   } catch (e) {
     console.log(e);
@@ -58,6 +71,7 @@ controller.saveInfoInDb = async (req, res) => {
       field3Err: null,
       field4Err: null,
       successMsg: e,
+      url: req.originalUrl,
     });
   }
 };
